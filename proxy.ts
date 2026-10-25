@@ -28,6 +28,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals and any file with an extension (favicon, images…).
-  matcher: ["/((?!_next|.*\\..*).*)"],
+  // Skip Next internals, the generated apple-icon route and any file with an
+  // extension (favicon, images…).
+  matcher: ["/((?!_next|apple-icon|.*\\..*).*)"],
 };
