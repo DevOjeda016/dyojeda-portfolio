@@ -10,12 +10,16 @@ import { gsap, motionOk, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
  * - [data-hero-fade]: hero copy and actions rise out of a blur after the name.
  * - [data-parallax="n"]: drifts n% of its height while its section scrolls away.
  * - [data-reveal]: section headings brighten word by word as they scroll in.
- * - [data-row]: rows rise in batches; ="clip" wipes up from a mask (projects),
- *   ="slide" slides in from the timeline rail (experience).
+ * - [data-row]: rows rise in batches; ="clip" wipes up from a mask (project
+ *   cards), ="slide" slides in from the timeline rail (experience).
  * - [data-draw]: a line that draws itself top to bottom with scroll.
- * - [data-pop]: children pop in with a stagger (chips, socials).
+ * - [data-pop]: children pop in with a stagger (stack tiles, socials).
  * - [data-expand]: a card that opens from an inset clip as it scrolls in.
- * - [data-magnetic]: buttons lean toward a fine pointer.
+ * - [data-type]: a terminal line that types itself when it scrolls in.
+ * - [data-mark]: the footer's giant wordmark rises letter by letter with scroll.
+ * - [data-spotlight]: a teal light that trails the pointer across a card.
+ * Entrances use explicit end values (`fromTo`, `set` + `to`): `from` would read a
+ * mid-transition state when the effect re-runs (StrictMode, HMR).
  * Everything is skipped with reduced motion; the markup is complete without it.
  */
 export function PageMotion({ children }: { children: ReactNode }) {
@@ -27,7 +31,7 @@ export function PageMotion({ children }: { children: ReactNode }) {
 
       mm.add(motionOk, () => {
         // Hero intro
-        gsap.from("[data-header]", { yPercent: -100, duration: 1, ease: "expo.out", delay: 0.05 });
+        gsap.fromTo("[data-header]", { yPercent: -100 }, { yPercent: 0, duration: 1.1, ease: "expo.out", delay: 0.05 });
         const name = scope.current!.querySelector<HTMLElement>("[data-hero-name]");
         if (name) {
           const split = SplitText.create(name, { type: "chars", smartWrap: true });
@@ -37,18 +41,16 @@ export function PageMotion({ children }: { children: ReactNode }) {
           gsap
             .timeline({ delay: 0.15, defaults: { ease: "expo.out" } })
             .set([name, "[data-hero-fade]"], { visibility: "visible" })
-            .from(letters, {
-              yPercent: 90,
-              rotate: 6,
-              autoAlpha: 0,
-              filter: "blur(12px)",
-              stagger: 0.05,
-              duration: 1.1,
-            })
-            .from(dot, { yPercent: -420, autoAlpha: 0, duration: 0.9, ease: "bounce.out" }, "-=0.6")
-            .from(
+            .fromTo(
+              letters,
+              { yPercent: 90, rotate: 6, autoAlpha: 0, filter: "blur(12px)" },
+              { yPercent: 0, rotate: 0, autoAlpha: 1, filter: "blur(0px)", stagger: 0.05, duration: 1.1 }
+            )
+            .fromTo(dot, { yPercent: -420, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, duration: 0.9, ease: "bounce.out" }, "-=0.6")
+            .fromTo(
               "[data-hero-fade]",
-              { y: 32, autoAlpha: 0, filter: "blur(8px)", stagger: 0.12, duration: 1.1 },
+              { y: 32, autoAlpha: 0, filter: "blur(8px)" },
+              { y: 0, autoAlpha: 1, filter: "blur(0px)", stagger: 0.12, duration: 1.1, clearProps: "filter" },
               "-=0.75"
             );
         }
@@ -84,8 +86,8 @@ export function PageMotion({ children }: { children: ReactNode }) {
           },
           {
             selector: '[data-row="clip"]',
-            from: { clipPath: "inset(0% 0% 100% 0%)", y: 40 },
-            to: { clipPath: "inset(0% 0% 0% 0%)", y: 0 },
+            from: { clipPath: "inset(0% 0% 100% 0% round 18px)", y: 48 },
+            to: { clipPath: "inset(0% 0% 0% 0% round 18px)", y: 0 },
           },
           {
             selector: '[data-row="slide"]',
@@ -99,32 +101,34 @@ export function PageMotion({ children }: { children: ReactNode }) {
             start: "top 88%",
             once: true,
             onEnter: (batch) =>
-              gsap.to(batch, { ...to, stagger: 0.12, duration: 1.1, ease: "expo.out", clearProps: "clipPath,filter" }),
+              gsap.to(batch, { ...to, stagger: 0.12, duration: 1.2, ease: "expo.out", clearProps: "clipPath,filter" }),
           });
         }
 
         gsap.utils.toArray<HTMLElement>("[data-draw]").forEach((line) => {
-          gsap.from(line, {
-            scaleY: 0,
-            transformOrigin: "top",
-            ease: "none",
-            scrollTrigger: { trigger: line.parentElement, start: "top 75%", end: "bottom 60%", scrub: 0.6 },
-          });
+          gsap.fromTo(
+            line,
+            { scaleY: 0 },
+            {
+              scaleY: 1,
+              transformOrigin: "top",
+              ease: "none",
+              scrollTrigger: { trigger: line.parentElement, start: "top 75%", end: "bottom 60%", scrub: 0.6 },
+            }
+          );
         });
 
-        // Explicit end values: `from` would read a mid-transition state when the
-        // effect re-runs (StrictMode, HMR) on items that carry CSS transitions.
         gsap.utils.toArray<HTMLElement>("[data-pop]").forEach((list) => {
           gsap.fromTo(
             list.children,
-            { autoAlpha: 0, scale: 0.7, y: 12 },
+            { autoAlpha: 0, scale: 0.8, y: 14 },
             {
               autoAlpha: 1,
               scale: 1,
               y: 0,
-              stagger: 0.035,
-              duration: 0.7,
-              ease: "back.out(2)",
+              stagger: 0.03,
+              duration: 0.8,
+              ease: "back.out(1.8)",
               clearProps: "transform,scale",
               scrollTrigger: { trigger: list, start: "top 90%", once: true },
             }
@@ -132,31 +136,66 @@ export function PageMotion({ children }: { children: ReactNode }) {
         });
 
         gsap.utils.toArray<HTMLElement>("[data-expand]").forEach((card) => {
-          gsap.from(card, {
-            clipPath: "inset(12% 8% 12% 8% round 18px)",
-            ease: "none",
-            scrollTrigger: { trigger: card, start: "top 95%", end: "top 45%", scrub: 0.6 },
-          });
+          gsap.fromTo(
+            card,
+            { clipPath: "inset(10% 6% 10% 6% round 18px)" },
+            {
+              clipPath: "inset(0% 0% 0% 0% round 18px)",
+              ease: "none",
+              scrollTrigger: { trigger: card, start: "top 95%", end: "top 50%", scrub: 0.6 },
+            }
+          );
         });
-      });
 
-      mm.add(`${motionOk} and (pointer: fine)`, () => {
-        const cleanups = gsap.utils.toArray<HTMLElement>("[data-magnetic]").map((el) => {
-          const x = gsap.quickTo(el, "x", { duration: 0.5, ease: "power3.out" });
-          const y = gsap.quickTo(el, "y", { duration: 0.5, ease: "power3.out" });
+        // Terminal lines type themselves once, a character per step.
+        gsap.utils.toArray<HTMLElement>("[data-type]").forEach((line) => {
+          const chars = line.textContent?.length ?? 0;
+          gsap.fromTo(
+            line,
+            { width: 0 },
+            {
+              width: `${chars}ch`,
+              duration: Math.min(1.2, chars * 0.045),
+              ease: `steps(${chars})`,
+              scrollTrigger: { trigger: line, start: "top 92%", once: true },
+            }
+          );
+        });
+
+        const mark = scope.current!.querySelector<HTMLElement>("[data-mark]");
+        if (mark) {
+          const split = SplitText.create(mark, { type: "chars" });
+          gsap.fromTo(
+            split.chars,
+            { yPercent: 70, autoAlpha: 0 },
+            {
+              yPercent: 0,
+              autoAlpha: 1,
+              stagger: 0.06,
+              ease: "none",
+              scrollTrigger: { trigger: mark, start: "top bottom", end: "bottom bottom", scrub: 0.8 },
+            }
+          );
+        }
+
+        // Spotlight cards: the light eases after the pointer instead of snapping to it.
+        const cleanups = gsap.utils.toArray<HTMLElement>("[data-spotlight]").map((card) => {
+          const x = gsap.quickTo(card, "--spot-x", { duration: 0.7, ease: "power3.out" });
+          const y = gsap.quickTo(card, "--spot-y", { duration: 0.7, ease: "power3.out" });
+          const enter = (e: PointerEvent) => {
+            const r = card.getBoundingClientRect();
+            gsap.set(card, { "--spot-x": e.clientX - r.left, "--spot-y": e.clientY - r.top });
+          };
           const move = (e: PointerEvent) => {
-            const r = el.getBoundingClientRect();
-            x((e.clientX - (r.left + r.width / 2)) * 0.3);
-            y((e.clientY - (r.top + r.height / 2)) * 0.3);
+            const r = card.getBoundingClientRect();
+            x(e.clientX - r.left);
+            y(e.clientY - r.top);
           };
-          const leave = () => {
-            gsap.to(el, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.4)" });
-          };
-          el.addEventListener("pointermove", move);
-          el.addEventListener("pointerleave", leave);
+          card.addEventListener("pointerenter", enter);
+          card.addEventListener("pointermove", move);
           return () => {
-            el.removeEventListener("pointermove", move);
-            el.removeEventListener("pointerleave", leave);
+            card.removeEventListener("pointerenter", enter);
+            card.removeEventListener("pointermove", move);
           };
         });
         return () => cleanups.forEach((fn) => fn());

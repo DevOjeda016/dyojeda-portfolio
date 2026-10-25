@@ -47,6 +47,8 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  /* One easing for every hover and state change: fast start, long settle. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
@@ -160,10 +162,32 @@
   background: var(--signature);
 }
 
+/* Cards with [data-spotlight]: a soft teal light follows the pointer. PageMotion
+   eases --spot-x/--spot-y toward the pointer, so the light trails with inertia. */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    22rem circle at calc(var(--spot-x, -999) * 1px) calc(var(--spot-y, -999) * 1px),
+    color-mix(in oklch, var(--signature) 13%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out-expo);
+  pointer-events: none;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
   .type-line {
     animation: type-in 1.4s steps(var(--chars)) 0.3s both;
   }

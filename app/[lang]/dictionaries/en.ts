@@ -1,11 +1,10 @@
 import type { Dictionary } from "./es";
 
-// English content. Everything marked "Replace" is a placeholder:
-// swap it for real data before publishing (never invent clients or metrics).
+// English content. Real data only: never invent clients, metrics or projects.
 export const en: Dictionary = {
   meta: {
     title: "dy.ojeda — Backend & Full-Stack Developer",
-    description: "Portfolio of Daniel Ojeda, Backend & Full-Stack developer.",
+    description: "Portfolio of Daniel Ojeda, a Backend & Full-Stack developer based in León, Mexico.",
   },
   nav: {
     about: "About",
@@ -20,7 +19,7 @@ export const en: Dictionary = {
     prompt: "~/dy.ojeda $ whoami",
     role: "Backend & Full-Stack Developer",
     pitch:
-      "I design and build the systems behind the product: APIs, data and infrastructure, plus the interface when it's needed.",
+      "I design and build the systems behind the product: APIs, data and infrastructure, and the interface too when it's needed.",
     primaryCta: "Contact me",
     secondaryCta: "View projects",
     portraitLabel: "Portrait of Daniel Ojeda made of dots",
@@ -35,30 +34,33 @@ export const en: Dictionary = {
     title: "About",
     body: [
       "I'm a software developer based in León, Mexico. I focus on the backend: APIs, integrations and databases, and I build the interface too when the project calls for it.",
-      "I come from IT consulting and digital banking, where I've led the migration and merge of critical systems and shipped AI to production with RAG and open-weight models. I'm studying Software Development and Management Engineering at Universidad Tecnológica de León.",
+      "I work in digital banking and come from IT consulting. I've led the migration and merge of critical systems and shipped AI to production with RAG and open-weight models. I'm studying Software Development and Management Engineering at Universidad Tecnológica de León.",
     ],
   },
   projects: {
     title: "Projects",
     viewLabel: "View project",
     more: "See everything on GitHub",
-    private: "Private repository",
+    kinds: { private: "Private", code: "Code", demo: "Live demo" },
     items: [
       {
-        name: "Space AI · Information point",
+        slug: "spaceia-ms-ai",
+        name: "SpaceIA · Information point",
         description:
-          "The AI microservice for Universidad Tecnológica de León, where I'm the lead developer: it answers institutional questions with RAG over PDFs normalized with Docling, with swappable LLMs and embeddings (Groq, OpenAI, Gemini or local). It includes a KDD pipeline to segment student queries.",
+          "The smart information point of Universidad Tecnológica de León. As lead developer, I built its AI microservice: it answers institutional questions with RAG over PDFs normalized with Docling, with swappable LLMs and embeddings (Groq, OpenAI, Gemini or local), plus a KDD pipeline that segments student queries.",
         stack: ["Python", "FastAPI", "LangChain", "ChromaDB", "Docling"],
         href: "",
       },
       {
+        slug: "spaceia-landing",
         name: "SpaceIA · Commercial platform",
         description:
-          "Public site, client portal and admin panel in one app: quotes, clients, products, costing, suppliers, purchasing, reviews and support. I built the frontend and much of the Clean Architecture API.",
+          "Public site, client portal and admin panel in one app: quotes, clients, products, costing, suppliers, purchasing, reviews and support. I built the frontend and much of the API, with Clean Architecture.",
         stack: ["Angular", "ASP.NET Core", "PostgreSQL", "Docker"],
         href: "https://spaceai-landing-web-frontend.vercel.app",
       },
       {
+        slug: "muebles-roble",
         name: "Muebles Roble · ERP",
         description:
           "A team-built ERP for a furniture maker's production process. I built the suppliers, purchasing, bill of materials (BOM), sales, materials, costs, audit and dashboard modules.",
@@ -66,13 +68,15 @@ export const en: Dictionary = {
         href: "https://github.com/lattice-systems/muebles-roble-diseno-app",
       },
       {
+        slug: "docs-classifier",
         name: "Document classifier",
         description:
-          "An API that takes PDFs, extracts their text with AI-based OCR, classifies the documents and splits files that bundle several documents into one.",
+          "An API that takes PDFs, extracts their text with AI-based OCR, classifies the documents and splits files that bundle several records into one.",
         stack: ["Python", "FastAPI", "OCR"],
         href: "https://github.com/DevOjeda016/docs-classifier",
       },
       {
+        slug: "zarape-springboot",
         name: "El Zarape",
         description:
           "Migration of a JAX-RS API built on MySQL stored procedures to Spring Boot 3 with JPA and JWT, with a React frontend and a Docker dev environment.",
@@ -101,10 +105,10 @@ export const en: Dictionary = {
         period: "Apr 2025 — Jul 2025",
         role: "Backend Developer",
         company: "Quarksoft",
-        description: "Remote consulting. Spring Boot, Scrum.",
+        description: "Remote consulting. Spring Boot and Scrum.",
         highlights: [
-          "Built, as part of a team, a bonus calculation system for insurance agents that works with 8 Mexican insurers.",
-          "Designed the KPI and metrics logic and a recommendation engine that steers agents toward meeting their incentives.",
+          "Worked in a team to build a bonus calculation system for insurance agents across 8 Mexican insurers.",
+          "Designed the KPI and metrics logic, and a recommendation engine that steers agents toward meeting their incentives.",
         ],
       },
     ],
@@ -114,7 +118,7 @@ export const en: Dictionary = {
     groups: [
       {
         name: "Backend",
-        items: ["Java", "Spring Boot", "C#", "ASP.NET", "PHP", "Laravel", "NestJS", "Python", "FastAPI", "SOAP"],
+        items: ["Java", "Spring Boot", "C# · ASP.NET", "PHP", "Laravel", "NestJS", "Python", "FastAPI", "SOAP"],
       },
       { name: "Frontend", items: ["TypeScript", "Vue 3", "Angular", "React", "Next.js"] },
       { name: "AI", items: ["RAG", "LangChain", "ChromaDB", "Docling", "Open-weight models"] },
@@ -127,6 +131,7 @@ export const en: Dictionary = {
   lattice: {
     title: "Lattice Systems",
     body: "Alongside my work as a developer, I'm building Lattice Systems: software consulting and development for teams that need solid systems.",
+    tags: ["Software consulting", "Custom development"],
     cta: "Visit latticesystems.dev",
   },
   contact: {
@@ -134,9 +139,16 @@ export const en: Dictionary = {
     body: "Write to me about a role, a project or an idea. I reply in Spanish or English.",
     email: "danielojeda.dev@outlook.com",
     emailPlaceholder: "",
+    copy: "Copy email",
+    copied: "Copied",
     socials: "Elsewhere",
   },
   footer: {
-    built: "Built with Next.js and shadcn/ui.",
+    prompt: "~/dy.ojeda $ exit",
+    tagline: "Backend & Full-Stack developer based in León, Mexico.",
+    site: "Site",
+    elsewhere: "Elsewhere",
+    backToTop: "Back to top",
+    built: "Built with Next.js, GSAP and a lot of dots.",
   },
 };

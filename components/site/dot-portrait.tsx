@@ -112,9 +112,17 @@ export function DotPortrait({
       for (let b = 1; b < 256; b++) histogram[b] += histogram[b - 1];
       const equalize = (value: number) => (figure ? histogram[Math.round(value * 255)] / figure : value);
 
-      // The photo's own crop edges (bottom, sides) fade out instead of cutting hard.
+      // The photo's own crop edges (bottom, sides) dissolve into the page's dot
+      // field: dots shrink and thin out with a stable per-cell dither.
+      const smoothstep = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
       const fade = (x: number, y: number) =>
-        Math.min(1, (height - y) / (height * 0.16), x / (width * 0.07), (width - x) / (width * 0.07));
+        smoothstep((height - y) / (height * 0.32)) *
+        smoothstep(x / (width * 0.18)) *
+        smoothstep((width - x) / (width * 0.18));
+      const dither = (c: number, r: number) => {
+        const n = Math.sin(c * 12.9898 + r * 78.233) * 43758.5453;
+        return n - Math.floor(n);
+      };
 
       const previous = dots;
       dots = [];
@@ -134,8 +142,9 @@ export function DotPortrait({
             const raw = dark ? value : (1 - value) ** 0.6;
             // A floor keeps the whole silhouette legible.
             tone = 0.16 + 0.84 * raw;
-            edge *= Math.max(0, fade(x, y));
-            if (edge < 0.05) continue;
+            const f = fade(x, y);
+            if (dither(c, r) > f * 1.3) continue;
+            edge *= 0.3 + 0.7 * f;
           }
           const prev = previous[dots.length];
           dots.push({
