@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent tooling: personal settings and local state
+.claude/settings.local.json
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/decision/
+
+# vendored skills, reinstalled from skills-lock.json
+.agents/
+.claude/skills/

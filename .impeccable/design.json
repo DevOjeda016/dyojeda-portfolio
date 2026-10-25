@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T00:00:00Z",
+  "title": "Design System: dy.ojeda",
+  "extensions": {
+    "colorMeta": {
+      "teal-ink": {
+        "role": "primary",
+        "displayName": "Teal Tinta",
+        "canonical": "oklch(0.511 0.096 186.391)",
+        "cssVar": "--signature / --primary (light)",
+        "tonalRamp": [
+          "oklch(0.277 0.046 192.524)",
+          "oklch(0.386 0.063 188.416)",
+          "oklch(0.437 0.078 188.216)",
+          "oklch(0.511 0.096 186.391)",
+          "oklch(0.6 0.118 184.704)",
+          "oklch(0.704 0.14 182.503)",
+          "oklch(0.855 0.138 181.071)",
+          "oklch(0.984 0.014 180.72)"
+        ]
+      },
+      "teal-bright": {
+        "role": "primary",
+        "displayName": "Teal Brillante",
+        "canonical": "oklch(0.704 0.14 182.503)",
+        "cssVar": "--signature (dark)",
+        "tonalRamp": [
+          "oklch(0.277 0.046 192.524)",
+          "oklch(0.386 0.063 188.416)",
+          "oklch(0.437 0.078 188.216)",
+          "oklch(0.511 0.096 186.391)",
+          "oklch(0.6 0.118 184.704)",
+          "oklch(0.704 0.14 182.503)",
+          "oklch(0.855 0.138 181.071)",
+          "oklch(0.984 0.014 180.72)"
+        ]
+      },
+      "teal-deep": {
+        "role": "primary",
+        "displayName": "Teal Profundo",
+        "canonical": "oklch(0.437 0.078 188.216)",
+        "cssVar": "--primary (dark)",
+        "tonalRamp": [
+          "oklch(0.277 0.046 192.524)",
+          "oklch(0.386 0.063 188.416)",
+          "oklch(0.437 0.078 188.216)",
+          "oklch(0.511 0.096 186.391)",
+          "oklch(0.6 0.118 184.704)",
+          "oklch(0.704 0.14 182.503)",
+          "oklch(0.855 0.138 181.071)",
+          "oklch(0.984 0.014 180.72)"
+        ]
+      },
+      "teal-foam": {
+        "role": "primary",
+        "displayName": "Espuma Teal",
+        "canonical": "oklch(0.984 0.014 180.72)",
+        "cssVar": "--primary-foreground",
+        "tonalRamp": [
+          "oklch(0.277 0.046 192.524)",
+          "oklch(0.386 0.063 188.416)",
+          "oklch(0.437 0.078 188.216)",
+          "oklch(0.511 0.096 186.391)",
+          "oklch(0.6 0.118 184.704)",
+          "oklch(0.704 0.14 182.503)",
+          "oklch(0.855 0.138 181.071)",
+          "oklch(0.984 0.014 180.72)"
+        ]
+      },
+      "mist-white": {
+        "role": "neutral",
+        "displayName": "Blanco Mist",
+        "canonical": "oklch(1 0 0)",
+        "cssVar": "--background / --card (light)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "mist-wash": {
+        "role": "neutral",
+        "displayName": "Lavado Mist",
+        "canonical": "oklch(0.963 0.002 197.1)",
+        "cssVar": "--muted / --accent (light)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "mist-hairline": {
+        "role": "neutral",
+        "displayName": "Filo Mist",
+        "canonical": "oklch(0.925 0.005 214.3)",
+        "cssVar": "--border / --input (light)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "mist-slate": {
+        "role": "neutral",
+        "displayName": "Pizarra Mist",
+        "canonical": "oklch(0.56 0.021 213.5)",
+        "cssVar": "--muted-foreground (light), --ring (dark)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Tinta Nocturna",
+        "canonical": "oklch(0.148 0.004 228.8)",
+        "cssVar": "--background (dark), --foreground (light)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "night-card": {
+        "role": "neutral",
+        "displayName": "Tarjeta Nocturna",
+        "canonical": "oklch(0.218 0.008 223.9)",
+        "cssVar": "--card (dark)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "night-wash": {
+        "role": "neutral",
+        "displayName": "Lavado Nocturno",
+        "canonical": "oklch(0.275 0.011 216.9)",
+        "cssVar": "--muted / --accent (dark)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "night-haze": {
+        "role": "neutral",
+        "displayName": "Bruma Nocturna",
+        "canonical": "oklch(0.723 0.014 214.4)",
+        "cssVar": "--muted-foreground (dark), --ring (light)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "night-frost": {
+        "role": "neutral",
+        "displayName": "Escarcha Nocturna",
+        "canonical": "oklch(0.987 0.002 197.1)",
+        "cssVar": "--foreground (dark)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 220)",
+          "oklch(0.27 0.008 220)",
+          "oklch(0.4 0.012 220)",
+          "oklch(0.52 0.016 220)",
+          "oklch(0.64 0.014 220)",
+          "oklch(0.76 0.01 220)",
+          "oklch(0.88 0.006 220)",
+          "oklch(0.96 0.003 220)"
+        ]
+      },
+      "night-hairline": {
+        "role": "neutral",
+        "displayName": "Filo Nocturno",
+        "canonical": "oklch(1 0 0 / 10%)",
+        "cssVar": "--border (dark)",
+        "tonalRamp": [
+          "oklch(1 0 0 / 4%)",
+          "oklch(1 0 0 / 7%)",
+          "oklch(1 0 0 / 10%)",
+          "oklch(1 0 0 / 15%)",
+          "oklch(1 0 0 / 25%)",
+          "oklch(1 0 0 / 40%)",
+          "oklch(1 0 0 / 60%)",
+          "oklch(1 0 0 / 85%)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Solo el nombre dy.ojeda en el hero, a escala de viewport."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección con revelado por palabra; 2.25rem en móvil, 3.75rem desde sm."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombres de proyecto (1.5rem) y puestos de experiencia (1.25rem)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Párrafos de Sobre mí, Lattice y Contacto en texto secundario, 52-62ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descripciones de proyecto y experiencia, máximo 60ch."
+      },
+      "terminal": {
+        "displayName": "Terminal",
+        "purpose": "La línea de prompt del hero que se escribe sola."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Datos técnicos en mono: stack, fechas, ES/EN y la tarjeta de estado."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "type-in",
+        "value": "1.4s steps(var(--chars)) 0.3s both",
+        "purpose": "La línea de terminal se escribe una vez, un paso por carácter."
+      },
+      {
+        "name": "caret-blink",
+        "value": "1s steps(1) infinite",
+        "purpose": "Parpadeo del cursor teal de la terminal."
+      },
+      {
+        "name": "status-pulse",
+        "value": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite (motion-safe)",
+        "purpose": "Punto del estado de Lattice Systems."
+      },
+      {
+        "name": "state-transition",
+        "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Transiciones de color y de desplazamiento de flechas en hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: no-preference)",
+        "purpose": "Toda animación y el scroll suave viven dentro de esta consulta; con movimiento reducido todo aparece en su estado final."
+      },
+      {
+        "name": "hero-intro",
+        "value": "GSAP SplitText chars: yPercent 70, blur 10px, stagger 0.045, expo.out; dot bounce.out",
+        "purpose": "Entrada del nombre en el hero; el punto teal cae al final."
+      },
+      {
+        "name": "heading-reveal",
+        "value": "GSAP SplitText words + ScrollTrigger scrub 0.6, top 88% → top 50%",
+        "purpose": "Revelado por palabra de los títulos de sección."
+      },
+      {
+        "name": "row-batch",
+        "value": "ScrollTrigger.batch: y 32 → 0, stagger 0.1, expo.out",
+        "purpose": "Entrada escalonada de filas."
+      },
+      {
+        "name": "magnetic",
+        "value": "quickTo x/y 30% del offset, retorno elastic.out(1, 0.4)",
+        "purpose": "Botones que siguen al puntero fino."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "El único CTA principal por pantalla: Contáctame / Contact me.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Contáctame<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 6px; height: 48px; padding: 0 20px 0 24px; border: 1px solid transparent; border-radius: 9999px; background: var(--primary); color: var(--primary-foreground); font-family: var(--font-sans), Montserrat, sans-serif; font-size: 1rem; font-weight: 500; text-decoration: none; transition: all 150ms cubic-bezier(0.4,0,0.2,1); outline: none; } .ds-btn-primary:hover { background: color-mix(in oklch, var(--primary) 80%, transparent); } .ds-btn-primary:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 30%, transparent); } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Acción secundaria: Ver proyectos, Visitar latticesystems.dev.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Ver proyectos<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/></svg></a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 6px; height: 48px; padding: 0 20px 0 24px; border: 1px solid var(--border); border-radius: 9999px; background: transparent; color: var(--foreground); font-family: var(--font-sans), Montserrat, sans-serif; font-size: 1rem; font-weight: 500; text-decoration: none; transition: all 150ms cubic-bezier(0.4,0,0.2,1); outline: none; } .ds-btn-outline:hover { background: var(--muted); } .ds-btn-outline:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 30%, transparent); } .ds-btn-outline:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Social Button",
+      "kind": "button",
+      "refersTo": "button-social",
+      "description": "Enlaces a GitHub, LinkedIn e Instagram en Contacto; outline compacto.",
+      "html": "<a class=\"ds-btn-social\" href=\"#\">GitHub<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn-social { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px 0 16px; border: 1px solid var(--border); border-radius: 9999px; background: transparent; color: var(--foreground); font-family: var(--font-sans), Montserrat, sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: all 150ms cubic-bezier(0.4,0,0.2,1); outline: none; } .ds-btn-social:hover { background: var(--muted); } .ds-btn-social:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 30%, transparent); }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Cabecera fija: wordmark con punto teal, enlaces secundarios, ES/EN en mono y cambio de tema.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">dy<span class=\"ds-dot\">.</span>ojeda</a><nav class=\"ds-nav-links\"><a href=\"#\">Sobre mí</a><a href=\"#\">Proyectos</a><a href=\"#\">Contacto</a><a class=\"ds-nav-lang\" href=\"#\">EN</a><button class=\"ds-nav-theme\" aria-label=\"Cambiar tema\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41\"/></svg></button></nav></header>",
+      "css": ".ds-nav { display: flex; height: 64px; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid color-mix(in oklch, var(--border) 60%, transparent); background: var(--background); color: var(--foreground); font-family: var(--font-sans), Montserrat, sans-serif; } .ds-nav-mark { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.025em; color: inherit; text-decoration: none; } .ds-dot { color: var(--signature); } .ds-nav-links { display: flex; align-items: center; gap: 4px; font-size: 0.875rem; font-weight: 500; } .ds-nav-links a { padding: 8px 12px; border-radius: 9999px; color: var(--muted-foreground); text-decoration: none; transition: color 150ms cubic-bezier(0.4,0,0.2,1); } .ds-nav-links a:hover { color: var(--foreground); } .ds-nav-links a:focus-visible { outline: 2px solid color-mix(in oklch, var(--ring) 50%, transparent); } .ds-nav-lang { font-family: var(--font-geist-mono), 'Geist Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; } .ds-nav-theme { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid transparent; border-radius: 9999px; background: transparent; color: var(--foreground); cursor: pointer; transition: all 150ms cubic-bezier(0.4,0,0.2,1); } .ds-nav-theme:hover { background: var(--muted); } .ds-nav-theme:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 30%, transparent); }"
+    },
+    {
+      "name": "Terminal Line",
+      "kind": "custom",
+      "refersTo": "terminal",
+      "description": "Prompt del hero que se escribe una vez, con cursor teal que parpadea.",
+      "html": "<p class=\"ds-term\"><span class=\"ds-term-line\" style=\"--chars: 19\">~/dy.ojeda $ whoami</span><span class=\"ds-term-caret\" aria-hidden=\"true\"></span></p>",
+      "css": ".ds-term { font-family: var(--font-geist-mono), 'Geist Mono', monospace; font-size: 1rem; color: var(--muted-foreground); margin: 0; } .ds-term-line { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; width: calc(var(--chars) * 1ch); } .ds-term-caret { display: inline-block; width: 0.55em; height: 1.1em; margin-left: 0.15em; vertical-align: -0.2em; background: var(--signature); } @media (prefers-reduced-motion: no-preference) { .ds-term-line { animation: ds-type-in 1.4s steps(var(--chars)) 0.3s both; } .ds-term-caret { animation: ds-caret 1s steps(1) infinite; } } @keyframes ds-type-in { from { width: 0; } } @keyframes ds-caret { 50% { opacity: 0; } }"
+    },
+    {
+      "name": "Status Card",
+      "kind": "card",
+      "refersTo": "card-status",
+      "description": "Tarjeta enlazada al pie del hero con lo que Daniel construye ahora y su estado en teal.",
+      "html": "<a class=\"ds-status\" href=\"#\"><span class=\"ds-status-label\">Actualmente construyendo</span><span class=\"ds-status-name\">Lattice Systems</span><span class=\"ds-status-desc\">Consultoría y desarrollo de software a medida.</span><span class=\"ds-status-state\"><span class=\"ds-status-dot\" aria-hidden=\"true\"></span>en construcción</span></a>",
+      "css": ".ds-status { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border: 1px solid var(--border); border-radius: 1.125rem; background: var(--card); color: var(--card-foreground); font-family: var(--font-sans), Montserrat, sans-serif; text-decoration: none; transition: border-color 150ms cubic-bezier(0.4,0,0.2,1); } .ds-status:hover { border-color: color-mix(in oklch, var(--signature) 50%, transparent); } .ds-status:focus-visible { outline: 2px solid color-mix(in oklch, var(--ring) 50%, transparent); } .ds-status-label { font-family: var(--font-geist-mono), 'Geist Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-foreground); } .ds-status-name { font-weight: 600; } .ds-status-desc { font-size: 0.875rem; color: var(--muted-foreground); } .ds-status-state { margin-left: auto; display: flex; align-items: center; gap: 8px; font-family: var(--font-geist-mono), 'Geist Mono', monospace; font-size: 0.75rem; color: var(--signature); } .ds-status-dot { width: 6px; height: 6px; border-radius: 9999px; background: var(--signature); } @media (prefers-reduced-motion: no-preference) { .ds-status-dot { animation: ds-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; } } @keyframes ds-pulse { 50% { opacity: 0.5; } }"
+    },
+    {
+      "name": "Tonal Card",
+      "kind": "card",
+      "refersTo": "card-tonal",
+      "description": "Bloque de Lattice Systems: un paso tonal sobre el fondo, borde de 1px, sin sombra.",
+      "html": "<div class=\"ds-card\"><h2 class=\"ds-card-title\">Lattice Systems</h2><p class=\"ds-card-body\">Consultoría y desarrollo de software para equipos que necesitan sistemas sólidos.</p></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 24px; padding: 48px; border: 1px solid var(--border); border-radius: 1.125rem; background: var(--card); color: var(--card-foreground); font-family: var(--font-sans), Montserrat, sans-serif; } .ds-card-title { margin: 0; font-size: 3rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em; } .ds-card-body { margin: 0; max-width: 60ch; font-size: 1.125rem; line-height: 1.556; color: var(--muted-foreground); }"
+    },
+    {
+      "name": "Project Row",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Fila de la lista de proyectos con divisores de 1px; la flecha se pinta de teal en hover.",
+      "html": "<a class=\"ds-row\" href=\"#\"><div><h3 class=\"ds-row-name\">Proyecto</h3><p class=\"ds-row-desc\">Descripción real del proyecto.</p><ul class=\"ds-row-stack\"><li>TypeScript</li><li>PostgreSQL</li></ul></div><svg class=\"ds-row-arrow\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); color: var(--foreground); font-family: var(--font-sans), Montserrat, sans-serif; text-decoration: none; } .ds-row-name { margin: 0 0 8px; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.025em; } .ds-row-desc { margin: 0; max-width: 60ch; color: var(--muted-foreground); } .ds-row-stack { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 12px 0 0; padding: 0; list-style: none; font-family: var(--font-geist-mono), 'Geist Mono', monospace; font-size: 0.75rem; color: var(--muted-foreground); } .ds-row-arrow { flex-shrink: 0; color: var(--muted-foreground); transition: all 150ms cubic-bezier(0.4,0,0.2,1); } .ds-row:hover .ds-row-arrow { color: var(--signature); transform: translate(4px, -4px); } .ds-row:focus-visible { outline: 2px solid color-mix(in oklch, var(--ring) 50%, transparent); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El estándar, hecho a mano",
+    "overview": "Es el portafolio de desarrollador que la gente espera encontrar, ejecutado con el oficio de las referencias que Daniel eligió (gauravgrv.vercel.app primero, ezradesmonds.my.id después). No hay metáfora que descifrar: el nombre ocupa el primer viewport a escala de cartel, una línea de terminal se escribe sola encima, la jerarquía es clara y siempre hay un camino corto a \"Contáctame\". La personalidad sale de la precisión: escala tipográfica dramática, mucho aire vertical, un solo acento teal y detalles propios como el punto de dy.ojeda.\n\nLa superficie es plana. La profundidad viene de tarjetas un paso tonal por encima del fondo y de bordes de un píxel, nunca de sombras. Los neutros son los del preset shadcn \"mist\" (grises fríos con un leve tinte hacia el teal) y los dos modos son de primera clase: el servidor entrega oscuro y un script en línea aplica antes del primer pintado la elección guardada o, si no hay, la preferencia del sistema. Todo el sitio es bilingüe ES/EN desde la estructura (`/es`, `/en`), con el mismo peso en ambos idiomas.\n\nEl movimiento es poco y con propósito: la terminal se escribe una vez y su cursor sigue parpadeando, y los títulos de sección se revelan palabra por palabra al hacer scroll. Todo es CSS y todo queda quieto con `prefers-reduced-motion`.",
+    "keyCharacteristics": [
+      "El nombre, en Montserrat extrabold a ~15vw, es el protagonista del primer viewport.",
+      "Una línea de terminal en Geist Mono que se escribe sola una vez, con cursor teal.",
+      "Un solo acento teal, reservado para firma y acción.",
+      "Superficies planas: capas tonales y bordes de 1px, sin sombras.",
+      "Botones pill; tarjetas con esquinas amplias y consistentes.",
+      "Oscuro y claro igual de cuidados; ES y EN con paridad total."
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "El teal aparece solo en el punto de dy.ojeda, el cursor de la terminal, el estado de Lattice Systems, el CTA principal y los hovers de enlaces. Para tinta sobre el fondo se usa `--signature`; para rellenos de botón, `--primary`. Ningún otro elemento se pinta de teal en reposo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Themes Rule",
+        "body": "Todo color es un token con valor claro y oscuro en `app/globals.css`. Nunca se escribe un color fijo dentro de un componente; si hace falta un color nuevo, se agrega como token en ambos modos.",
+        "section": "colors"
+      },
+      {
+        "name": "The Scale Contrast Rule",
+        "body": "El salto entre display y body es dramático a propósito. Si el nombre no domina el primer viewport, falta escala.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Is Data Rule",
+        "body": "La mono marca datos técnicos (prompt, fechas, herramientas, idioma, estado). Nunca se usa como etiqueta o numeración encima de un título de sección.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Ground Rule",
+        "body": "Ninguna superficie se levanta con sombra. Si algo necesita separarse, sube un paso tonal o gana un borde de 1px; los estados se expresan con color de fondo, color de texto o color de borde.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar componentes de shadcn/ui (`components/ui/`, `base-rhea` sobre Base UI) reestilizados con los tokens de este sistema; agrégalos con el CLI de shadcn.",
+      "Do mantener un solo CTA principal por pantalla: \"Contáctame\" / \"Contact me\".",
+      "Do dar a cada texto su versión ES y EN con el mismo peso, en los diccionarios de `app/[lang]/dictionaries/`.",
+      "Do mostrar solo trabajo real: proyectos de git y experiencia verificable.",
+      "Do respetar `prefers-reduced-motion` en toda animación.",
+      "Do aplicar forma pill (9999px) a todo botón nuevo; el radio por defecto del kit no es el del sistema.",
+      "Do separar superficies con un paso tonal (`--card`) y bordes de 1px.",
+      "Do tratar el sombrero estilo Sinaloa, si aparece, como un único ícono de línea con el mismo trazo y color que el resto de la UI."
+    ],
+    "donts": [
+      "Don't inventar clientes, testimonios, métricas o casos de Lattice Systems.",
+      "Don't escribir colores fijos en componentes: todo sale de los tokens de `app/globals.css`.",
+      "Don't pintar de teal nada fuera de la lista de The One Accent Rule.",
+      "Don't usar sombras en tarjetas, botones o cabecera.",
+      "Don't poner números de sección ni etiquetas tipo eyebrow encima de los títulos.",
+      "Don't convertir el sombrero en tema, caricatura o imaginería asociada al narco.",
+      "Don't usar degradados morado-azul ni brillos neón como decoración.",
+      "Don't animar todo: la terminal y el revelado de títulos son las animaciones de firma; el resto se queda quieto."
+    ]
+  }
+}
