@@ -205,7 +205,7 @@ Una sola página con anclas: cabecera fija, hero, Sobre mí, Proyectos, Experien
 - **Experiencia:** línea de tiempo con riel de 1px a la izquierda y un punto por puesto (el actual en teal, con pulso); columna de 11rem para el periodo y el contenido a la derecha desde `sm`; en móvil se apila.
 - **Stack:** cuatro filas con divisores de 1px (Backend, Frontend, IA, Datos e infraestructura); desde `lg` el nombre del grupo, con su icono lucide en un círculo de 40px, ocupa una columna de 14rem y los mosaicos de tecnologías fluyen a la derecha en 2/3/5 columnas.
 - **Lattice Systems:** tarjeta partida desde `lg` (1.1fr / 1fr): texto, etiquetas y CTA a la izquierda; la retícula interactiva a la derecha, separada por un borde de 1px (arriba en móvil, 16–20rem de alto).
-- **Pie:** tres columnas desde `md` (marca con tagline y `exit`, Sitio, En otros lados), el wordmark gigante al 6% debajo y una barra final con © y "Volver arriba".
+- **Pie:** tres columnas desde `md` (marca con tagline y `exit`, Sitio, En otros lados), el wordmark gigante tenue debajo y una barra final con © y "Volver arriba". Los descendentes del wordmark nunca cruzan la línea de la barra.
 - **Móvil:** la nav oculta Sobre mí, Proyectos y Experiencia y deja Contacto, ES/EN y el cambio de tema; los CTAs del hero se apilan a ancho completo.
 - Las anclas aterrizan 80px por debajo del borde superior (Lenis `anchors.offset` y `scroll-padding-top: 5rem` sin JS), libres de la cabecera fija.
 
@@ -278,7 +278,7 @@ Mosaico `rounded-xl` en `--card` con el logo de 20px (`TechIcon`) y el nombre en
 Tarjeta partida con reflector. A la izquierda: dominio y estado en mono con punto que pulsa, título, texto, dos etiquetas pill en mono (del propio diccionario, sin inventar servicios) y el CTA outline. A la derecha, `components/site/lattice-graph.tsx`: un canvas con nodos sobre una cuadrícula irregular de 46px (semilla fija), aristas en `--muted-foreground` al 30%, cinco pulsos teal con estela que saltan de arista en arista y, en un radio de 150px alrededor del puntero (escuchado en toda la tarjeta), nodos que se atraen 16px y aristas que se encienden. Máscara radial en los bordes; quieta con movimiento reducido y en pausa fuera de pantalla.
 
 ### Footer
-Marca con tagline y la línea `~/dy.ojeda $ exit` con cursor; columnas Sitio y En otros lados (redes y Lattice Systems con iconos); el wordmark "dy.ojeda" a `clamp(4.5rem, 22vw, 20rem)` en `--foreground` al 6% con el punto teal al 40%; y la barra final con © y "Volver arriba".
+Marca con tagline y la línea `~/dy.ojeda $ exit` con cursor; columnas Sitio y En otros lados (redes y Lattice Systems con iconos); el wordmark "dy.ojeda" a `clamp(4.5rem, 22vw, 20rem)` en oscuro es `--foreground` al 6% con el punto teal al 40%; en claro es un tinte de `--signature` (13% mezclado con `--background`, punto al 55%), porque un gris sobre blanco se lee como deshabilitado. Lleva relleno inferior de 0.24em para que la "y" y la "j" no toquen la barra; y la barra final con © y "Volver arriba".
 
 ## Do's and Don'ts
 

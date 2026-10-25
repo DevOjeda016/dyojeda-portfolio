@@ -500,8 +500,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <ul className="flex flex-col gap-2.5 text-muted-foreground">
               {sections.map((s) => (
                 <li key={s.href}>
-                  <a href={s.href} className="group inline-flex items-center gap-2 transition-colors hover:text-foreground">
-                    <span aria-hidden className={cn("h-px w-0 bg-signature transition-[width] group-hover:w-4", settle)} />
+                  <a href={s.href} className="group inline-flex items-center transition-colors hover:text-foreground">
+                    <span aria-hidden className={cn("h-px w-0 bg-signature transition-[width,margin] group-hover:mr-2 group-hover:w-4", settle)} />
                     {s.label}
                   </a>
                 </li>
@@ -534,18 +534,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </div>
         </div>
 
+        {/* leading-[0.8] hangs the descenders (y, j) ~0.2em below the box; the bottom padding keeps them off the bar. */}
         <p
           data-mark
           aria-hidden
-          className="pointer-events-none text-center text-[clamp(4.5rem,22vw,20rem)] leading-[0.8] font-extrabold tracking-[-0.04em] text-foreground/[0.06] select-none"
+          className="pointer-events-none pb-[0.24em] text-center text-[clamp(4.5rem,22vw,20rem)] leading-[0.8] font-extrabold tracking-[-0.04em] text-[color-mix(in_oklch,var(--signature)_13%,var(--background))] select-none dark:text-foreground/[0.06]"
         >
-          dy<span className="text-signature/40">.</span>ojeda
+          dy<span className="text-[color-mix(in_oklch,var(--signature)_55%,var(--background))] dark:text-signature/40">.</span>ojeda
         </p>
 
         <div className="border-t border-border">
           <div className={cn(container, "flex flex-col-reverse gap-4 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between")}>
             <p>
-              © <CopyrightYear /> Daniel Ojeda · {t.footer.built}
+              © <CopyrightYear /> Daniel Ojeda
             </p>
             <a href="#top" className="group inline-flex items-center gap-3 self-start transition-colors hover:text-foreground sm:self-auto">
               {t.footer.backToTop}

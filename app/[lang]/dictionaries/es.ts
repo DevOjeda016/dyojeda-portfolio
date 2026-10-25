@@ -148,7 +148,6 @@ export const es = {
     site: "Sitio",
     elsewhere: "En otros lados",
     backToTop: "Volver arriba",
-    built: "Hecho con Next.js, GSAP y muchos puntos.",
   },
 };
 

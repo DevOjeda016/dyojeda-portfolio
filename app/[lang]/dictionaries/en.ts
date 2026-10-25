@@ -149,6 +149,5 @@ export const en: Dictionary = {
     site: "Site",
     elsewhere: "Elsewhere",
     backToTop: "Back to top",
-    built: "Built with Next.js, GSAP and a lot of dots.",
   },
 };
