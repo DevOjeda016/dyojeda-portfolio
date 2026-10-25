@@ -28,9 +28,10 @@ export async function generateMetadata({
   if (!hasLocale(lang)) return {};
   const { meta } = getDictionary(lang);
   return {
+    metadataBase: new URL("https://dyojeda.tech"),
     title: meta.title,
     description: meta.description,
-    alternates: { languages: { es: "/es", en: "/en" } },
+    alternates: { canonical: `/${lang}`, languages: { es: "/es", en: "/en" } },
   };
 }
 
