@@ -3,8 +3,9 @@ import { join } from "node:path";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight, BrainCircuit, Database, Lock, Mail, PanelsTopLeft, Server } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import { GitHubIcon, InstagramIcon, LinkedInIcon } from "@/components/site/brand-icons";
 import { DotField } from "@/components/site/dot-field";
 import { DotPortrait } from "@/components/site/dot-portrait";
 import { PageMotion } from "@/components/site/page-motion";
@@ -14,19 +15,36 @@ import { cn } from "@/lib/utils";
 import { getDictionary, hasLocale, links } from "./dictionaries";
 
 const container = "mx-auto w-full max-w-6xl px-5 sm:px-8";
+const section = "py-14 sm:py-20";
 const pill = "h-12 rounded-full px-6 text-base";
+// Nav link with an underline that grows from the centre on hover.
+const navLink =
+  "relative rounded-full px-3 py-2 text-muted-foreground transition-colors hover:text-foreground after:absolute after:inset-x-3 after:bottom-1 after:h-px after:origin-center after:scale-x-0 after:bg-signature after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100";
+// Stack icons follow the order of the stack groups in the dictionaries.
+const stackIcons = [Server, PanelsTopLeft, BrainCircuit, Database];
 
 function Wordmark({ animatedDot = false }: { animatedDot?: boolean }) {
   return (
     <>
-      dy<span className="text-signature" data-dot={animatedDot || undefined}>.</span>ojeda
+      dy
+      <span
+        className={cn(
+          "text-signature",
+          !animatedDot && "inline-block transition-transform duration-300 ease-out group-hover:-translate-y-[0.3em]"
+        )}
+        data-dot={animatedDot || undefined}
+      >
+        .
+      </span>
+      ojeda
     </>
   );
 }
 
-// Drop a photo at public/retrato.{jpg,png,webp} and the hero portrait uses it.
+// Drop a photo at public/retrato.{png,webp,jpg} and the hero portrait uses it.
+// A cut-out with transparency gives a figure without a frame.
 const portrait =
-  ["retrato.jpg", "retrato.png", "retrato.webp"]
+  ["retrato.png", "retrato.webp", "retrato.jpg"]
     .filter((file) => existsSync(join(process.cwd(), "public", file)))
     .map((file) => `/${file}`)[0] ?? null;
 
@@ -43,29 +61,29 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const otherLang = lang === "es" ? "en" : "es";
 
   const socials = [
-    { name: "GitHub", href: links.github },
-    { name: "LinkedIn", href: links.linkedin },
-    { name: "Instagram", href: links.instagram },
+    { name: "GitHub", href: links.github, Icon: GitHubIcon },
+    { name: "LinkedIn", href: links.linkedin, Icon: LinkedInIcon },
+    { name: "Instagram", href: links.instagram, Icon: InstagramIcon },
   ].filter((s) => s.href);
 
   return (
     <PageMotion>
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background">
+      <header data-header className="sticky top-0 z-40 border-b border-border/60 bg-background">
         <div className={cn(container, "flex h-16 items-center justify-between")}>
-          <a href="#top" className="text-lg font-bold tracking-tight">
+          <a href="#top" className="group text-lg font-bold tracking-tight">
             <Wordmark />
           </a>
           <nav className="flex items-center gap-1 text-sm font-medium">
-            <a href="#sobre-mi" className="hidden rounded-full px-3 py-2 text-muted-foreground transition-colors hover:text-foreground md:block">
+            <a href="#sobre-mi" className={cn(navLink, "hidden md:block")}>
               {t.nav.about}
             </a>
-            <a href="#proyectos" className="hidden rounded-full px-3 py-2 text-muted-foreground transition-colors hover:text-foreground md:block">
+            <a href="#proyectos" className={cn(navLink, "hidden md:block")}>
               {t.nav.projects}
             </a>
-            <a href="#experiencia" className="hidden rounded-full px-3 py-2 text-muted-foreground transition-colors hover:text-foreground md:block">
+            <a href="#experiencia" className={cn(navLink, "hidden md:block")}>
               {t.nav.experience}
             </a>
-            <a href="#contacto" className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:text-foreground">
+            <a href="#contacto" className={navLink}>
               {t.nav.contact}
             </a>
             <Link
@@ -85,8 +103,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         {/* Hero */}
         <section className="relative isolate overflow-hidden">
           <DotField />
-          <div className={cn(container, "grid min-h-[calc(100svh-4rem)] content-center gap-10 py-16 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-center lg:gap-12")}>
-            <div className="flex flex-col gap-6">
+          <div className={cn(container, "grid min-h-[calc(100svh-4rem)] content-center gap-8 pt-12 pb-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-end lg:gap-10 lg:pt-8")}>
+            <div data-parallax="-12" className="flex flex-col gap-6 lg:self-center">
               <p className="font-mono text-sm text-muted-foreground sm:text-base">
                 <span
                   className="type-line"
@@ -109,79 +127,92 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 </p>
               </div>
               <div data-hero-fade className="flex flex-col gap-3 sm:flex-row">
-                <a href="#contacto" data-magnetic className={cn(buttonVariants(), pill)}>
+                <a href="#contacto" data-magnetic className={cn(buttonVariants(), pill, "group")}>
                   {t.hero.primaryCta}
-                  <ArrowUpRight data-icon="inline-end" />
+                  <ArrowUpRight data-icon="inline-end" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
-                <a href="#proyectos" data-magnetic className={cn(buttonVariants({ variant: "outline" }), pill, "bg-background/80")}>
+                <a href="#proyectos" data-magnetic className={cn(buttonVariants({ variant: "outline" }), pill, "group bg-background/80")}>
                   {t.hero.secondaryCta}
-                  <ArrowDown data-icon="inline-end" />
+                  <ArrowDown data-icon="inline-end" className="transition-transform duration-300 group-hover:translate-y-0.5" />
                 </a>
               </div>
             </div>
 
-            <div className="mx-auto aspect-[4/5] w-full max-w-[22rem] sm:max-w-sm lg:max-w-md">
+            <div data-parallax="8" className="mx-auto aspect-[7/8] w-full max-w-[20rem] sm:max-w-sm lg:-mb-10 lg:max-w-none">
               <DotPortrait src={portrait} fallback="dy." label={t.hero.portraitLabel} />
             </div>
 
-          <a
-            data-hero-fade
-            href={links.lattice}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex flex-col gap-1 rounded-2xl border border-border bg-card px-5 py-4 transition-colors hover:border-signature/50 sm:flex-row sm:items-center sm:gap-4 lg:col-span-2"
-          >
-            <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-              {t.building.label}
-            </span>
-            <span className="font-semibold">{t.building.name}</span>
-            <span className="text-sm text-muted-foreground">{t.building.description}</span>
-            <span className="flex items-center gap-2 font-mono text-xs text-signature sm:ml-auto">
-              <span aria-hidden className="size-1.5 rounded-full bg-signature motion-safe:animate-pulse" />
-              {t.building.status}
-              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </span>
-          </a>
+            <a
+              data-hero-fade
+              href={links.lattice}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative z-10 flex flex-col gap-1 rounded-2xl border border-border bg-card px-5 py-4 transition-colors duration-300 hover:border-signature/50 sm:flex-row sm:items-center sm:gap-4 lg:col-span-2"
+            >
+              <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+                {t.building.label}
+              </span>
+              <span className="font-semibold">{t.building.name}</span>
+              <span className="text-sm text-muted-foreground">{t.building.description}</span>
+              <span className="flex items-center gap-2 font-mono text-xs text-signature sm:ml-auto">
+                <span aria-hidden className="size-1.5 rounded-full bg-signature motion-safe:animate-pulse" />
+                {t.building.status}
+                <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </a>
           </div>
         </section>
 
         {/* About */}
-        <section id="sobre-mi" className={cn(container, "grid gap-8 py-24 sm:py-32 lg:grid-cols-[1fr_1.4fr] lg:gap-16")}>
+        <section id="sobre-mi" className={cn(container, section, "grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:gap-16")}>
           <RevealHeading>{t.about.title}</RevealHeading>
           <div className="flex max-w-[62ch] flex-col gap-5 text-lg text-pretty text-muted-foreground">
             {t.about.body.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
+              <p key={i} data-row>
+                {paragraph}
+              </p>
             ))}
           </div>
         </section>
 
         {/* Projects */}
-        <section id="proyectos" className={cn(container, "flex flex-col gap-10 py-24 sm:py-32")}>
+        <section id="proyectos" className={cn(container, section, "flex flex-col gap-8 sm:gap-10")}>
           <RevealHeading>{t.projects.title}</RevealHeading>
-          <ol className="divide-y divide-border border-y border-border">
+          <ol className="relative border-b border-border">
             {t.projects.items.map((project, i) => {
               const body = (
                 <>
                   <div className="flex flex-col gap-2">
-                    <h3 className="text-2xl font-semibold tracking-tight transition-transform duration-500 ease-out group-hover:translate-x-2">{project.name}</h3>
+                    <h3 className="text-2xl font-semibold tracking-tight transition-transform duration-500 ease-out group-hover:translate-x-2">
+                      {project.name}
+                    </h3>
                     <p className="max-w-[60ch] text-muted-foreground">{project.description}</p>
                     <ul className="mt-1 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-muted-foreground">
                       {project.stack.map((tool) => (
-                        <li key={tool}>{tool}</li>
+                        <li key={tool} className="transition-colors duration-300 group-hover:text-foreground">
+                          {tool}
+                        </li>
                       ))}
                     </ul>
                   </div>
-                  {project.href && (
-                    <ArrowUpRight
-                      aria-label={t.projects.viewLabel}
-                      className="size-6 shrink-0 text-muted-foreground transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-signature"
-                    />
+                  {project.href ? (
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-border transition-all duration-500 ease-out group-hover:-rotate-45 group-hover:border-signature group-hover:bg-signature group-hover:text-background">
+                      <ArrowUpRight aria-label={t.projects.viewLabel} className="size-5 rotate-45" />
+                    </span>
+                  ) : (
+                    <span className="flex shrink-0 items-center gap-1.5 font-mono text-xs text-muted-foreground">
+                      <Lock aria-hidden className="size-3.5" />
+                      <span className="hidden sm:inline">{t.projects.private}</span>
+                      <span className="sr-only sm:hidden">{t.projects.private}</span>
+                    </span>
                   )}
                 </>
               );
-              const row = "group flex items-start justify-between gap-6 py-8";
+              // The muted band wipes in from the left on hover.
+              const row =
+                "group relative isolate flex items-start justify-between gap-6 px-1 py-7 sm:px-4 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-muted/70 before:transition-transform before:duration-500 before:ease-out hover:before:scale-x-100";
               return (
-                <li key={i} data-row>
+                <li key={i} data-row="clip" className="border-t border-border">
                   {project.href ? (
                     <a href={project.href} target="_blank" rel="noreferrer" className={row}>
                       {body}
@@ -199,17 +230,29 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             rel="noreferrer"
             className="group inline-flex items-center gap-2 self-start font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
+            <GitHubIcon className="size-4 transition-transform duration-300 group-hover:-rotate-12" />
             {t.projects.more}
             <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </section>
 
         {/* Experience */}
-        <section id="experiencia" className={cn(container, "flex flex-col gap-10 py-24 sm:py-32")}>
+        <section id="experiencia" className={cn(container, section, "flex flex-col gap-8 sm:gap-10")}>
           <RevealHeading>{t.experience.title}</RevealHeading>
-          <ol className="flex flex-col gap-10">
+          <ol className="relative flex flex-col gap-12 pl-8">
+            {/* Timeline rail; draws itself as the section scrolls by. */}
+            <span aria-hidden data-draw className="absolute top-2 bottom-2 left-[5px] w-px bg-border" />
             {t.experience.items.map((job, i) => (
-              <li key={i} data-row className="grid gap-2 sm:grid-cols-[12rem_1fr] sm:gap-8">
+              <li key={i} data-row="slide" className="relative grid gap-2 sm:grid-cols-[11rem_1fr] sm:gap-8">
+                <span
+                  aria-hidden
+                  className={cn(
+                    "absolute top-1.5 -left-8 grid size-[11px] place-items-center rounded-full border bg-background",
+                    i === 0 ? "border-signature" : "border-border"
+                  )}
+                >
+                  {i === 0 && <span className="size-[5px] rounded-full bg-signature motion-safe:animate-pulse" />}
+                </span>
                 <p className="font-mono text-sm text-muted-foreground tabular-nums">{job.period}</p>
                 <div className="flex flex-col gap-1">
                   <h3 className="text-xl font-semibold">
@@ -228,25 +271,38 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </section>
 
         {/* Stack */}
-        <section className={cn(container, "flex flex-col gap-10 py-24 sm:py-32")}>
+        <section className={cn(container, section, "flex flex-col gap-8 sm:gap-10")}>
           <RevealHeading>{t.stack.title}</RevealHeading>
-          <div className="grid gap-10 sm:grid-cols-3">
-            {t.stack.groups.map((group) => (
-              <div key={group.name} data-row className="flex flex-col gap-3">
-                <h3 className="font-semibold">{group.name}</h3>
-                <ul className="flex flex-col gap-1.5 text-muted-foreground">
-                  {group.items.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
+            {t.stack.groups.map((group, g) => {
+              const Icon = stackIcons[g % stackIcons.length];
+              return (
+                <div key={group.name} className="group/stack flex flex-col gap-4">
+                  <h3 className="flex items-center gap-3 font-semibold">
+                    <span className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors duration-300 group-hover/stack:border-signature/50 group-hover/stack:text-signature">
+                      <Icon aria-hidden className="size-[18px]" />
+                    </span>
+                    {group.name}
+                  </h3>
+                  <ul data-pop className="flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-full border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground transition-[color,border-color,translate] duration-300 ease-out hover:-translate-y-0.5 hover:border-signature/50 hover:text-foreground"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </section>
 
         {/* Lattice Systems */}
-        <section className={cn(container, "py-24 sm:py-32")}>
-          <div className="flex flex-col gap-6 rounded-2xl border border-border bg-card p-8 sm:p-12">
+        <section className={cn(container, section)}>
+          <div data-expand className="flex flex-col gap-6 rounded-2xl border border-border bg-card p-8 sm:p-12">
             <RevealHeading className="text-3xl sm:text-5xl">{t.lattice.title}</RevealHeading>
             <p className="max-w-[60ch] text-lg text-pretty text-muted-foreground">{t.lattice.body}</p>
             <a
@@ -254,25 +310,28 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               target="_blank"
               rel="noreferrer"
               data-magnetic
-              className={cn(buttonVariants({ variant: "outline" }), pill, "self-start")}
+              className={cn(buttonVariants({ variant: "outline" }), pill, "group self-start")}
             >
               {t.lattice.cta}
-              <ArrowUpRight data-icon="inline-end" />
+              <ArrowUpRight data-icon="inline-end" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </section>
 
         {/* Contact */}
-        <section id="contacto" className={cn(container, "flex flex-col gap-8 py-24 sm:py-40")}>
+        <section id="contacto" className={cn(container, "flex flex-col gap-8 py-20 sm:py-32")}>
           <RevealHeading className="sm:text-7xl">{t.contact.title}</RevealHeading>
-          <p className="max-w-[52ch] text-lg text-pretty text-muted-foreground">{t.contact.body}</p>
+          <p data-row className="max-w-[52ch] text-lg text-pretty text-muted-foreground">{t.contact.body}</p>
           {t.contact.email ? (
             <a
+              data-row
               href={`mailto:${t.contact.email}`}
-              className="flex items-center gap-3 self-start text-2xl font-semibold underline decoration-border decoration-2 underline-offset-8 transition-colors hover:text-signature hover:decoration-signature sm:text-4xl"
+              className="group flex items-center gap-3 self-start text-2xl font-semibold break-all transition-colors hover:text-signature sm:text-4xl"
             >
-              <Mail className="size-7 text-muted-foreground" />
-              {t.contact.email}
+              <Mail className="size-7 shrink-0 text-muted-foreground transition-transform duration-300 group-hover:-rotate-12 group-hover:text-signature" />
+              <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_2px] bg-left-bottom bg-no-repeat pb-1 transition-[background-size] duration-500 ease-out group-hover:bg-[length:100%_2px]">
+                {t.contact.email}
+              </span>
             </a>
           ) : (
             <p className="text-2xl font-semibold text-muted-foreground sm:text-4xl">
@@ -280,18 +339,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </p>
           )}
           {socials.length > 0 && (
-            <ul aria-label={t.contact.socials} className="flex flex-wrap gap-3">
-              {socials.map((social) => (
-                <li key={social.name}>
+            <ul aria-label={t.contact.socials} data-pop className="flex flex-wrap gap-3">
+              {socials.map(({ name, href, Icon }) => (
+                <li key={name}>
                   <a
-                    href={social.href}
+                    href={href}
                     target="_blank"
                     rel="noreferrer"
                     data-magnetic
-                    className={cn(buttonVariants({ variant: "outline" }), "h-10 rounded-full px-4")}
+                    className={cn(buttonVariants({ variant: "outline" }), "group h-10 rounded-full px-4 transition-colors hover:border-signature/50")}
                   >
-                    {social.name}
-                    <ArrowUpRight data-icon="inline-end" />
+                    <Icon className="size-4 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-12 group-hover:text-signature" />
+                    {name}
+                    <ArrowUpRight data-icon="inline-end" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </li>
               ))}
@@ -302,7 +362,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
       <footer className="border-t border-border">
         <div className={cn(container, "flex flex-col gap-2 py-8 text-sm text-muted-foreground sm:flex-row sm:justify-between")}>
-          <p>
+          <p className="group">
             © <CopyrightYear /> <Wordmark />
           </p>
           <p>{t.footer.built}</p>

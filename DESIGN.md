@@ -65,8 +65,8 @@ spacing:
   gutter-wide: "2rem"
   row: "2rem"
   block: "2.5rem"
-  section: "6rem"
-  section-wide: "8rem"
+  section: "3.5rem"
+  section-wide: "5rem"
   container: "72rem"
 components:
   button-primary:
@@ -137,6 +137,7 @@ El punto de "dy.ojeda" es el motivo vivo del sitio: el retrato del hero está he
 - Una línea de terminal en Geist Mono que se escribe sola una vez, con cursor teal.
 - Un solo acento teal, reservado para firma y acción.
 - Superficies planas: capas tonales y bordes de 1px, sin sombras.
+- Iconos lucide de trazo 2px (y marcas propias en la misma retícula), nunca emoji.
 - Botones pill; tarjetas con esquinas amplias y consistentes.
 - Oscuro y claro igual de cuidados; ES y EN con paridad total.
 
@@ -163,7 +164,7 @@ Estrategia contenida: neutros fríos "mist" casi blancos y casi negros, más un 
 - **Filo Nocturno** (`night-hairline`): `--border` en oscuro, blanco al 10%.
 
 ### Named Rules
-**The One Accent Rule.** El teal aparece solo en el punto de dy.ojeda, el cursor de la terminal, el estado de Lattice Systems, el CTA principal y los hovers de enlaces. Para tinta sobre el fondo se usa `--signature`; para rellenos de botón, `--primary`. Ningún otro elemento se pinta de teal en reposo.
+**The One Accent Rule.** El teal aparece solo en el punto de dy.ojeda, el retrato de puntos, el cursor de la terminal, los estados vivos (Lattice Systems y el punto del puesto actual en la línea de tiempo), el CTA principal y los hovers (enlaces, flecha de proyecto, iconos de stack y redes, chips). Para tinta sobre el fondo se usa `--signature`; para rellenos de botón, `--primary`. Ningún otro elemento se pinta de teal en reposo.
 
 **The Two Themes Rule.** Todo color es un token con valor claro y oscuro en `app/globals.css`. Nunca se escribe un color fijo dentro de un componente; si hace falta un color nuevo, se agrega como token en ambos modos.
 
@@ -194,11 +195,11 @@ Estrategia contenida: neutros fríos "mist" casi blancos y casi negros, más un 
 Una sola página con anclas: cabecera fija, hero, Sobre mí, Proyectos, Experiencia, Stack, bloque de Lattice Systems, Contacto y pie. Todo vive en un contenedor centrado de 72rem con márgenes laterales de 1.25rem (2rem desde `sm`).
 
 - **Hero:** ocupa la altura del viewport menos la cabecera (`100svh - 4rem`) y centra verticalmente prompt, nombre, rol, pitch y CTAs; la tarjeta de estado cierra el primer viewport abajo.
-- **Ritmo vertical:** cada sección lleva 6rem arriba y abajo (8rem desde `sm`; Contacto, 10rem). Entre título y contenido hay 2.5rem.
+- **Ritmo vertical:** cada sección lleva 3.5rem arriba y abajo (5rem desde `sm`; Contacto, 5rem/8rem). Entre título y contenido hay 2rem (2.5rem desde `sm`).
 - **Sobre mí:** a partir de `lg` pasa a dos columnas (1fr / 1.4fr) con el título a la izquierda.
-- **Proyectos:** lista vertical con divisores de 1px, no rejilla de tarjetas; cada fila tiene 2rem de padding vertical y la flecha a la derecha.
-- **Experiencia:** columna fija de 12rem para el periodo y el contenido a la derecha desde `sm`; en móvil se apila.
-- **Stack:** tres columnas desde `sm`.
+- **Proyectos:** lista vertical con divisores de 1px, no rejilla de tarjetas; cada fila tiene 1.75rem de padding vertical y, a la derecha, la flecha en un círculo o, sin enlace, un candado con "Repositorio privado".
+- **Experiencia:** línea de tiempo con riel de 1px a la izquierda y un punto por puesto (el actual en teal, con pulso); columna de 11rem para el periodo y el contenido a la derecha desde `sm`; en móvil se apila.
+- **Stack:** cuatro grupos (Backend, Frontend, IA, Datos e infraestructura) en dos columnas desde `sm`; cada grupo lleva un icono lucide en un círculo de 40px y sus herramientas como chips pill en mono.
 - **Móvil:** la nav oculta Sobre mí, Proyectos y Experiencia y deja Contacto, ES/EN y el cambio de tema; los CTAs del hero se apilan a ancho completo.
 - `scroll-padding-top: 5rem` mantiene las anclas por debajo de la cabecera fija.
 
@@ -243,7 +244,7 @@ La firma del hero. El prompt en mono se escribe de una vez en 1.4s con pasos igu
 El `h1` (`[data-hero-name]`) se divide en letras con SplitText; las letras suben desde 70% con desenfoque de 10px y un escalonado de 0.045s, y el punto teal cae al final con `bounce.out`. Luego el rol, el texto y los CTAs (`[data-hero-fade]`) suben 24px. Mientras tanto quedan ocultos por la clase `.motion` (puesta antes del pintado) con una animación de respaldo que los muestra a los 3s si JS no corre.
 
 ### Dot Portrait
-Retrato de halftone en canvas (`components/site/dot-portrait.tsx`): muestrea `public/retrato.{jpg,png,webp}` (o, sin foto, el texto "dy.") en una retícula de 9px y dibuja un punto `--signature` por celda, con radio según el tono. En claro los tonos oscuros dan puntos; en oscuro, los claros. Los puntos llegan dispersos con `expo.out` y se apartan del puntero en un radio de 90px. Se redibuja al cambiar de tema.
+Retrato de halftone en canvas (`components/site/dot-portrait.tsx`), sin marco ni fondo: muestrea `public/retrato.png`, un recorte con transparencia (o, sin foto, el texto "dy."), y dibuja un punto `--signature` por celda de 5px solo donde está la figura. Antes de mapear tonos aplica contraste local (cada celda contra el promedio de su vecindad) y ecualiza el histograma solo sobre la figura, para que la cara conserve lentes, ojos y sonrisa entre un sombrero claro y una camisa oscura. Un piso de tono mantiene legible toda la silueta; los bordes de recorte de la foto (abajo y a los lados) se desvanecen. En claro los tonos oscuros dan puntos grandes, con los medios tonos levantados; en oscuro, los claros. La opacidad de cada punto sigue su tono, en cuatro niveles. Los puntos se arman de abajo hacia arriba con `expo.out`, una franja de escaneo recorre la figura cada 7s y, cerca del puntero (suavizado), crecen y se apartan en un radio de 110px. Se apoya en el borde inferior del hero y se redibuja al cambiar de tema.
 
 ### Dot Field
 Retícula de puntos de 1px cada 28px detrás del hero (`components/site/dot-field.tsx`), en `--muted-foreground` al 22% y desvanecida hacia los bordes con una máscara radial. Respira con una onda lenta; en un radio de 180px alrededor del puntero los puntos crecen y se pintan con `--signature`. Se pausa fuera de pantalla.
@@ -251,8 +252,11 @@ Retícula de puntos de 1px cada 28px detrás del hero (`components/site/dot-fiel
 ### Section Heading Reveal
 Cada título (`[data-reveal]`) se divide en palabras con SplitText; con ScrollTrigger en scrub, entre "top 88%" y "top 50%", cada palabra pasa de opacidad 0.12, desenfoque de 6px y 25% de desplazamiento a su estado final.
 
-### Rows and Magnetic Buttons
-Las filas de proyectos, experiencia y stack (`[data-row]`) entran en lotes con `ScrollTrigger.batch`, subiendo 32px con escalonado de 0.1s. Los CTAs y enlaces sociales (`[data-magnetic]`) siguen al puntero fino un 30% y regresan con `elastic.out`.
+### Page Entrance and Scroll
+La cabecera baja al abrir la página; el nombre entra letra por letra con giro y desenfoque, el punto cae con rebote y el resto del hero sube saliendo de un desenfoque. Al desplazarse, el texto del hero y el retrato se separan en paralaje (`[data-parallax]`). Cada sección entra con su propio gesto: párrafos que suben desde un desenfoque (`[data-row]`), proyectos que se destapan de abajo hacia arriba con `clip-path` (`[data-row="clip"]`), puestos que se deslizan desde el riel (`[data-row="slide"]`) mientras el riel se dibuja con el scroll (`[data-draw]`), chips y redes que aparecen en cascada con `back.out` (`[data-pop]`) y la tarjeta de Lattice que se abre desde un recorte interior (`[data-expand]`). Los CTAs y enlaces sociales (`[data-magnetic]`) siguen al puntero fino un 30% y regresan con `elastic.out`. Toda animación de entrada usa valores finales explícitos (`fromTo`/`set`+`to`), porque `from` lee estados a medio camino cuando el efecto se vuelve a montar sobre elementos con transiciones CSS.
+
+### Hover States
+Los enlaces de la nav ganan un subrayado teal que crece desde el centro; el punto del wordmark salta. En las filas de proyecto una banda `--muted` barre desde la izquierda, el nombre se desplaza, el stack se aclara y la flecha gira hacia afuera dentro de un círculo que se llena de teal. Los chips suben 2px con borde teal; el icono de cada grupo de stack se pinta de teal. Las redes llevan su icono (GitHub, LinkedIn e Instagram dibujados en la retícula de lucide, `components/site/brand-icons.tsx`) que gira y se pinta; el correo se subraya de izquierda a derecha.
 
 ### Status Card ("Actualmente construyendo")
 Tarjeta enlazada a Lattice Systems al pie del hero: etiqueta en mono, nombre en semibold, descripción en secundario y, a la derecha, el estado en mono teal con un punto que pulsa (solo con `motion-safe`) y una flecha que se desplaza en hover.

@@ -41,20 +41,28 @@ export const es = {
     title: "Proyectos",
     viewLabel: "Ver proyecto",
     more: "Ver todo en GitHub",
+    private: "Repositorio privado",
     items: [
       {
-        name: "SpaceAI",
+        name: "Space AI · Punto de información",
         description:
-          "Ecosistema de IA e IoT para resolver dudas sobre horarios universitarios: pipeline KDD para segmentar y modelar consultas estudiantiles, preprocesamiento RAG con Docling para PDFs heterogéneos y un microservicio en FastAPI con NLP que guarda las consultas.",
-        stack: ["Python", "FastAPI", "RAG", "Docling", "NLP"],
+          "Microservicio de IA de la Universidad Tecnológica de León, del que soy desarrollador principal: responde preguntas institucionales con RAG sobre PDFs normalizados con Docling, con LLM y embeddings intercambiables (Groq, OpenAI, Gemini o locales). Incluye un pipeline KDD para segmentar consultas estudiantiles.",
+        stack: ["Python", "FastAPI", "LangChain", "ChromaDB", "Docling"],
         href: "",
       },
       {
-        name: "ERP para mueblería",
+        name: "SpaceIA · Plataforma comercial",
         description:
-          "ERP desarrollado en equipo. Construí los módulos de proveedores, compras, lista de materiales (BOM), ventas, materiales, costos, auditoría y dashboard.",
-        stack: ["Backend", "ERP"],
-        href: "",
+          "Sitio público, portal de clientes y panel de administración en una sola app: cotizaciones, clientes, productos, costeo, proveedores, compras, reseñas y soporte. Hice el frontend y gran parte de la API con Clean Architecture.",
+        stack: ["Angular", "ASP.NET Core", "PostgreSQL", "Docker"],
+        href: "https://spaceai-landing-web-frontend.vercel.app",
+      },
+      {
+        name: "Muebles Roble · ERP",
+        description:
+          "ERP para el proceso productivo de una mueblería, hecho en equipo. Construí los módulos de proveedores, compras, lista de materiales (BOM), ventas, materiales, costos, auditoría y dashboard.",
+        stack: ["Python", "Flask", "SQLAlchemy", "MySQL"],
+        href: "https://github.com/lattice-systems/muebles-roble-diseno-app",
       },
       {
         name: "Clasificador de documentos",
@@ -69,20 +77,6 @@ export const es = {
           "Migración de una API JAX-RS con stored procedures de MySQL a Spring Boot 3 con JPA y JWT, con un frontend en React y entorno de desarrollo en Docker.",
         stack: ["Java", "Spring Boot", "MySQL", "React", "Docker"],
         href: "https://github.com/DevOjeda016/zarape-springboot",
-      },
-      {
-        name: "Sistema de autenticación",
-        description:
-          "Web API de registro e inicio de sesión con ASP.NET Core Identity y JWT sobre SQL Server, con un cliente en Angular.",
-        stack: ["C#", ".NET 9", "SQL Server", "Angular"],
-        href: "https://github.com/DevOjeda016/auth-system-api",
-      },
-      {
-        name: "SmartGreenhouse",
-        description:
-          "App Android para gestionar invernaderos: lecturas de sensores en tiempo real, gráficas, umbrales para administradores y un asistente con IA.",
-        stack: ["Java", "Android", "Material 3"],
-        href: "https://github.com/DevOjeda016/SmartGreenhouseApp",
       },
     ],
   },
@@ -119,12 +113,13 @@ export const es = {
     groups: [
       {
         name: "Backend",
-        items: ["Java · Spring Boot", "C# · ASP.NET", "PHP · Laravel", "Node · NestJS", "Python · FastAPI"],
+        items: ["Java", "Spring Boot", "C#", "ASP.NET", "PHP", "Laravel", "NestJS", "Python", "FastAPI", "SOAP"],
       },
-      { name: "Frontend", items: ["Vue 3", "Angular", "React", "Next.js"] },
+      { name: "Frontend", items: ["TypeScript", "Vue 3", "Angular", "React", "Next.js"] },
+      { name: "IA", items: ["RAG", "LangChain", "ChromaDB", "Docling", "Modelos de peso abierto"] },
       {
         name: "Datos e infraestructura",
-        items: ["SQL Server · MySQL · PostgreSQL", "MongoDB · Redis", "Docker · GitHub Actions", "Azure · Vercel · Linux"],
+        items: ["SQL Server", "MySQL", "PostgreSQL", "MongoDB", "Redis", "Docker", "GitHub Actions", "Azure", "Vercel", "Linux"],
       },
     ],
   },

@@ -42,20 +42,28 @@ export const en: Dictionary = {
     title: "Projects",
     viewLabel: "View project",
     more: "See everything on GitHub",
+    private: "Private repository",
     items: [
       {
-        name: "SpaceAI",
+        name: "Space AI · Information point",
         description:
-          "An AI and IoT ecosystem that answers questions about university schedules: a KDD pipeline to segment and model student queries, Docling-based RAG preprocessing for mixed PDFs and a FastAPI NLP microservice that stores the queries.",
-        stack: ["Python", "FastAPI", "RAG", "Docling", "NLP"],
+          "The AI microservice for Universidad Tecnológica de León, where I'm the lead developer: it answers institutional questions with RAG over PDFs normalized with Docling, with swappable LLMs and embeddings (Groq, OpenAI, Gemini or local). It includes a KDD pipeline to segment student queries.",
+        stack: ["Python", "FastAPI", "LangChain", "ChromaDB", "Docling"],
         href: "",
       },
       {
-        name: "Furniture store ERP",
+        name: "SpaceIA · Commercial platform",
         description:
-          "A team-built ERP. I built the suppliers, purchasing, bill of materials (BOM), sales, materials, costs, audit and dashboard modules.",
-        stack: ["Backend", "ERP"],
-        href: "",
+          "Public site, client portal and admin panel in one app: quotes, clients, products, costing, suppliers, purchasing, reviews and support. I built the frontend and much of the Clean Architecture API.",
+        stack: ["Angular", "ASP.NET Core", "PostgreSQL", "Docker"],
+        href: "https://spaceai-landing-web-frontend.vercel.app",
+      },
+      {
+        name: "Muebles Roble · ERP",
+        description:
+          "A team-built ERP for a furniture maker's production process. I built the suppliers, purchasing, bill of materials (BOM), sales, materials, costs, audit and dashboard modules.",
+        stack: ["Python", "Flask", "SQLAlchemy", "MySQL"],
+        href: "https://github.com/lattice-systems/muebles-roble-diseno-app",
       },
       {
         name: "Document classifier",
@@ -70,20 +78,6 @@ export const en: Dictionary = {
           "Migration of a JAX-RS API built on MySQL stored procedures to Spring Boot 3 with JPA and JWT, with a React frontend and a Docker dev environment.",
         stack: ["Java", "Spring Boot", "MySQL", "React", "Docker"],
         href: "https://github.com/DevOjeda016/zarape-springboot",
-      },
-      {
-        name: "Authentication system",
-        description:
-          "A sign-up and login Web API with ASP.NET Core Identity and JWT on SQL Server, with an Angular client.",
-        stack: ["C#", ".NET 9", "SQL Server", "Angular"],
-        href: "https://github.com/DevOjeda016/auth-system-api",
-      },
-      {
-        name: "SmartGreenhouse",
-        description:
-          "An Android app for managing greenhouses: real-time sensor readings, charts, admin-set thresholds and an AI assistant.",
-        stack: ["Java", "Android", "Material 3"],
-        href: "https://github.com/DevOjeda016/SmartGreenhouseApp",
       },
     ],
   },
@@ -120,12 +114,13 @@ export const en: Dictionary = {
     groups: [
       {
         name: "Backend",
-        items: ["Java · Spring Boot", "C# · ASP.NET", "PHP · Laravel", "Node · NestJS", "Python · FastAPI"],
+        items: ["Java", "Spring Boot", "C#", "ASP.NET", "PHP", "Laravel", "NestJS", "Python", "FastAPI", "SOAP"],
       },
-      { name: "Frontend", items: ["Vue 3", "Angular", "React", "Next.js"] },
+      { name: "Frontend", items: ["TypeScript", "Vue 3", "Angular", "React", "Next.js"] },
+      { name: "AI", items: ["RAG", "LangChain", "ChromaDB", "Docling", "Open-weight models"] },
       {
         name: "Data & infrastructure",
-        items: ["SQL Server · MySQL · PostgreSQL", "MongoDB · Redis", "Docker · GitHub Actions", "Azure · Vercel · Linux"],
+        items: ["SQL Server", "MySQL", "PostgreSQL", "MongoDB", "Redis", "Docker", "GitHub Actions", "Azure", "Vercel", "Linux"],
       },
     ],
   },
