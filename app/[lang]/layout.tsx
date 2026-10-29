@@ -5,6 +5,7 @@ import "../globals.css";
 import { InlineScript } from "@/components/site/inline-script";
 import { cn } from "@/lib/utils";
 import { getDictionary, hasLocale, locales } from "./dictionaries";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -55,7 +56,10 @@ export default async function RootLayout({
       <head>
         <InlineScript html={themeScript} />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
